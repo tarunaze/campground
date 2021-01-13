@@ -1,0 +1,45 @@
+{% extends 'camp/base.html' %}
+
+{% block content %}
+
+<h1 class='posttitle loader'>{{ place.title }}</h1>
+
+        {% if place.get_count.count %}
+            <div class="date postdate">
+                <p>Added on:   {{ place.get_access.added_date }}</p>
+                <p>By: {{ place.get_access.user }}</p>
+            </div>
+
+        {% else %}
+            <a class="btn btn-primary" href="{% url 'place_add' pk=place.pk %}">Confirm Save</a>
+        {% endif %}
+        <br>
+      <img src="{{ place.place_url }}" alt="" width="1000" height="800">
+      <p class='loader' >{{ place.description|safe|linebreaksbr }}</p>
+      <p>country : {{ place.country }}</p>
+      <p>state : {{ place.state }}</p>
+
+      {% if user.is_authenticated %}
+          <a class="btn btn-primary" href="{% url 'place_edit' pk=place.pk %}"><span class="fa fa-pencil"></span></a>
+          <a class="btn btn-primary" href="{% url 'place_remove' pk=place.pk %}"><span class="fa fa-remove"></span></a>
+      {% endif %}
+
+
+
+  <hr>
+  <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_place' pk=place.pk %}">Add comment</a>
+  <div class="container">
+
+
+  {% for comment in place.comments.all %}
+  <br>
+          <p>{{ comment.text|safe|linebreaks }}</p>
+          <p>Posted by: <strong>{{ comment.author }}</strong></p>
+
+    
+  {% empty %}
+      <p>No comments posted.</p>
+  {% endfor %}
+</div>
+{% endblock %}
+  

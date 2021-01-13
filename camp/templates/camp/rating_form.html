@@ -1,0 +1,23 @@
+{% extends 'camp/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+<h1>Rate it!!</h1>
+
+<form method="POST" class="post-form">
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit" class="save btn btn-primary">Finish</button>
+</form>
+</div>
+</div>
+
+<div>
+    {% for message in messages %}
+    <h3><i>{{message}}</i> </h3>
+    {% endfor %}
+</div>
+{% endblock %}
+  

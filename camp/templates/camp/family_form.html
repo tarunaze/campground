@@ -1,0 +1,16 @@
+{% extends 'camp/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+<h1>Fill about your Friends and Family!!!</h1>
+
+<form method="POST" class="post-form">
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit" class="save btn btn-primary">Done</button>
+</form>
+</div>
+</div>
+{% endblock %}

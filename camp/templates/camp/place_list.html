@@ -1,0 +1,25 @@
+{% extends 'camp/base.html' %}
+
+{% block content %}
+<div class="container">
+<div class="centerstage">
+
+    {% for place in place_list %}
+        <div class="post">
+            <img src="{{ place.place_url }}" alt="" width="1000" height="600">
+            <p class="posttitle"><a href="{% url 'place_detail' pk=place.pk %}">{{ place.name }}</a></p>
+            <div class="date">
+                <p>Added on: {{ place.get_access.added_date|date:"D M Y"}}</p>
+                <p>Added by: {{ place.get_access.user }}</p>
+            </div>
+            <a href="{% url 'place_detail' pk=place.pk %}">Comments: {{ place.comments.count }}</a><br><br>
+        </div>
+    {% endfor %}
+</div>
+</div>
+
+
+
+
+{% endblock %}
+  

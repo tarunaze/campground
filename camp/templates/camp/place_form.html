@@ -1,0 +1,20 @@
+{% extends 'camp/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+<h1>New place</h1>
+
+<form method="POST" class="post-form">
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit" class="save btn btn-primary">Save</button>
+</form>
+</div>
+</div>
+
+<script>var editor = new MediumEditor('.editable');</script>
+
+
+{% endblock %}
