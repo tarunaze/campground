@@ -188,7 +188,7 @@ def register(request):
                 v1.save()
                 my_email = "campgroundsite@gmail.com"
                 his_email = user.email
-                password = "camp@123"
+                password = "*****"
                 message = "hi "+user.first_name+" "+user.last_name+" welcome to campground!!!" 
 
                 server = smtplib.SMTP('smtp.gmail.com',587)
